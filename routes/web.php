@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/panel', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// BURADA auth ve isAdmin ise içerideki fonksiyonlar çalışacak.
+//prefix == route ye isim veriyoruz.
+Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function(){
+    Route::get('deneme' , function() {
+        return "Midelleeeee test";
+    });
+});
