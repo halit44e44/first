@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\QuizController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +24,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/panel', function () {
 // BURADA auth ve isAdmin ise içerideki fonksiyonlar çalışacak.
 //prefix == route ye isim veriyoruz.
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function(){
-    Route::get('deneme' , function() {
-        return "Midelleeeee test";
-    });
+    Route::resource('quizzes',QuizController::class);
 });
