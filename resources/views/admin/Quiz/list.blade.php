@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">
+            <h5 class="card-title text-right mb-3">
                 <a href="{{ route('quizzes.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni Quiz</a>
             </h5>
 
