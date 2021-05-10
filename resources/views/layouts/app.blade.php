@@ -33,20 +33,32 @@
                         </h2>
                         
                     </div>
+                   
                 </header>
             @endif
                     
             
             <div class="py-6">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                     @if ($errors->any())
+                        <div class="alert alert-danger text-center">  
+                            @foreach ($errors->all() as $item)
+                                <li>{{$item}}</li>
+                            @endforeach
+                        </div>    
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success text-center"><i class="fa fa-check"></i>  {{ session('success') }}</div>
+                    @endif
                     {{ $slot }}
                     
                 </div>
             </div>
         </div>
-
         @stack('modals')
-            {{ $js }}
+            @isset($js)
+                {{ $js }}
+            @endisset
         @livewireScripts
     </body>
 </html>
