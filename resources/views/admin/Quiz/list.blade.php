@@ -25,13 +25,13 @@
                             <td>{{ $item->finished_at }}</td>
                             <td class="text-center">
                                 <a href="{{ route('quizzes.edit' , $item->id) }}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
-                                <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                <a href="{{ route('quizzes.destroy' ,$item->id) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{ $quizzes->links() }}
+            {{ $quizzes->links() }} <!-- Sayfa Altında Sayılar. -->
 
         </div>
     </div>

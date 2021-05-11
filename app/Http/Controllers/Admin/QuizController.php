@@ -80,8 +80,11 @@ class QuizController extends Controller
     public function update(QuizUpdateRequest $request, $id)
     {
         if (isset($request, $id)) {
-            Quiz::where('id', $id)->update($request->except(['_method', '_token']));
-            return redirect()->route('quizzes.index')->withSuccess('Quiz Başarılı bir şekilde güncellendi.');
+            /**
+             * Burada except diyerek => kayıt esanasında post ile gelen _method ve _token bilgilerini kayıt etmiyoruz. Çünkü DB'de ilgili alanlar bulunmuyor.
+             */
+            Quiz::where('id', $id)->update($request->except(['_method', '_token'])); 
+            return redirect()->route('quizzes.index')->withSuccess('Quiz Başarılı bir şekilde güncellendi');
         }
     }
 
@@ -91,8 +94,11 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) 
     {
-        //
+        if (isset($id)) {
+            Quiz::find($id)->delete();
+            return redirect()->route('quizzes.index')->withSuccess('Quiz Başarılı Bir Şekilde Silindi');
+        }
     }
 }
