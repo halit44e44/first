@@ -9,4 +9,11 @@ class Quiz extends Model
 {
     use HasFactory;
     protected $fillable=['title','description','finished_at'];
+
+    /**
+     * Question Tablosunu Quiz tablosuyla ilişkilendirdik.
+     */
+    public function questions() {
+        return $this->hasMany('App\Models\Question');
+    }
 }

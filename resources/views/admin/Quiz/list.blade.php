@@ -24,8 +24,9 @@
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->finished_at }}</td>
                             <td class="text-center">
-                                <a href="{{ route('quizzes.edit' , $item->id) }}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
-                                <a href="{{ route('quizzes.destroy' ,$item->id) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                <a href="{{ route('questions.index' , $item->id)}}" placeholder="Soru Ekle" class="btn btn-success btn-sm"><i class="fa fa-question"></i></a>
+                                <a href="{{ route('quizzes.edit' , $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
+                                <a href="{{ route('quizzes.destroy' ,$item->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
                     @endforeach

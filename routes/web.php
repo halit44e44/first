@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\QuizController;
 /*
@@ -26,4 +27,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/panel', function () {
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function () {
     Route::get('quizzes/{id}', [QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy'); // Burada Silme İşlemi için show metodu yerine destroy metoduna yönlendiriyoruz.s
     Route::resource('quizzes', QuizController::class);
+    Route::resource('quizzes/{quiz_id}/questions', QuestionController::class);
 });

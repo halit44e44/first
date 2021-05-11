@@ -29,7 +29,7 @@ class QuestionFactory extends Factory
             'answer3' => $this->faker->sentence(rand(1,3)),
             'answer4' => $this->faker->sentence(rand(1,3)),
             'answer5' => $this->faker->sentence(rand(1,3)),
-            'correct_answer' => rand(1,4)
+            'correct_answer' => rand(1,5)
         ];
     }
 }
