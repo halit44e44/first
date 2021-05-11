@@ -4,16 +4,17 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-right mb-3">
-                <a href="{{ route('quizzes.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni Quiz</a>
+                <a href="{{ route('quizzes.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni
+                    Quiz</a>
             </h5>
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                    <th scope="col">Quiz</th>
-                    <th scope="col">Durum</th>
-                    <th scope="col">Bitiş Tarihi</th>
-                    <th scope="col">İşlemler</th>
+                        <th scope="col">Quiz</th>
+                        <th scope="col">Durum</th>
+                        <th scope="col">Bitiş Tarihi</th>
+                        <th scope="col">İşlemler</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +24,7 @@
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->finished_at }}</td>
                             <td class="text-center">
-                                <a href="#" class="btn btn-primary"><i class="fa fa-pen"></i></a>
+                                <a href="{{ route('quizzes.edit' , $item->id) }}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
                                 <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
