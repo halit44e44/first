@@ -35,7 +35,7 @@
                                 {{ substr($item->correct_answer,-1) }}.Cevap
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('quizzes.edit' , $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
+                                <a href="{{ route('question.edit' , $quiz->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
                                 <a href="{{ route('quizzes.destroy' ,$item->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
