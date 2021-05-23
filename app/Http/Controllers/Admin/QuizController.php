@@ -18,7 +18,15 @@ class QuizController extends Controller
     public function index()
     {
         //with tüm soruları JSON olarak getiriyor. withCount Kaç soru olduğunu gösteriyor.
-        $quizzes = Quiz::withCount('questions')->paginate(5);
+        $quizzes = Quiz::withCount('questions');
+
+        if (request()->get('title')) {
+            $quizzes = $quizzes->where('title','LIKE',"%".request()->get('title')."%");
+        }
+        if (request()->get('status')) {
+            $quizzes = $quizzes->where('status',request()->get('status'));
+        }
+        $quizzes = $quizzes->paginate(5);
         return view('admin.quiz.list', compact('quizzes'));
     }
 
