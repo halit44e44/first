@@ -4,7 +4,9 @@
 
     <div class="card">
         <div class="card-body">
-
+            @if($quiz->questions_count < 4)
+                <div class="alert alert-danger text-center"> Lütfen 4 veya daha fazla soru giriniz. </div>
+            @endif
             <form method="POST" action="{{ route('quizzes.update' , $quiz->id) }}">
                 @method('PUT') <!-- güncelleme işlemi -->
                 @csrf
@@ -15,6 +17,22 @@
                 <div class="form-group mb-3">
                     <label for="title">Quiz Açıklama</label>
                     <textarea row="4" class="form-control" name="description">{{ $quiz->description }}</textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Quiz Durumu</label>
+                    <select name="status" class="form-control">ü
+                        <option 
+                            @if($quiz->questions_count > 3)
+                                @if($quiz->status == "publish") selected @endif
+                            @else
+                                disabled
+                            @endif
+                                value="publish">
+                                    Aktif
+                        </option>
+                        <option @if($quiz->status == "passive") selected @endif value="passive">Pasif</option>
+                        <option @if($quiz->status == "draft") selected @endif value="draft">Taslak</option>
+                    </select>
                 </div>
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" id="isFinished" @if ($quiz->finished_at) checked @endif>

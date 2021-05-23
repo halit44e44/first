@@ -4,6 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-right mb-3">
+                <a href="{{ route('quizzes.index') }}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Geri</a>
                 <a href="{{ route('questions.create', $quiz->id) }}" class="btn btn-primary"><i class="fa fa-plus"></i>
                     Yeni Soru</a>
             </h5>
@@ -43,7 +44,7 @@
                             <td class="text-center">
                                 <a href="{{ route('questions.edit', [$item->quiz_id, $item->id]) }}"
                                     class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
-                                <a href="{{ route('quizzes.destroy', $item->id) }}" class="btn btn-danger btn-sm"><i
+                                <a href="{{ route('questions.destroy', [$item->quiz_id, $item->id]) }}" class="btn btn-danger btn-sm"><i
                                         class="fa fa-times"></i></a>
                             </td>
                         </tr>

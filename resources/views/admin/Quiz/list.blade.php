@@ -12,6 +12,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Quiz</th>
+                        <th scope="col">Soru Sayısı</th>
                         <th scope="col">Durum</th>
                         <th scope="col">Bitiş Tarihi</th>
                         <th scope="col">İşlemler</th>
@@ -21,8 +22,23 @@
                     @foreach ($quizzes as $item)
                         <tr>
                             <td>{{ $item->title }}</th>
-                            <td>{{ $item->status }}</td>
-                            <td>{{ $item->finished_at }}</td>
+                            <td>{{ $item->questions_count }}</th>
+                            <td>
+                                @switch($item->status)
+                                    @case('publish')
+                                        <i class="btn btn-outline-success btn-sm d-flex justify-content-center">Aktif</i>
+                                    @break
+                                    @case('draft')
+                                        <i class="btn btn-outline-warning btn-sm d-flex justify-content-center">Taslak</i>
+                                    @break
+                                    @case('passive')
+                                        <i class="btn btn-outline-danger btn-sm d-flex justify-content-center">Pasif</i>
+                                    @break
+                                @endswitch
+                            </td>
+                            <td>
+                                <span title="{{ $item->finished_at }}">{{ $item->finished_at ?  $item->finished_at->diffForHumans() : null}}</span>
+                            </td>
                             <td class="text-center">
                                 <a href="{{ route('questions.index' , $item->id)}}" placeholder="Soru Ekle" class="btn btn-success btn-sm"><i class="fa fa-question"></i></a>
                                 <a href="{{ route('quizzes.edit' , $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i></a>
