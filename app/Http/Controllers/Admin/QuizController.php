@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Http\Requests\QuizCreateRequest;
 use App\Http\Requests\QuizUpdateRequest;
+use Illuminate\Support\Str;
 
 class QuizController extends Controller
 {
@@ -92,7 +93,9 @@ class QuizController extends Controller
             /**
              * Burada except diyerek => kayıt esanasında post ile gelen _method ve _token bilgilerini kayıt etmiyoruz. Çünkü DB'de ilgili alanlar bulunmuyor.
              */
-            Quiz::where('id', $id)->update($request->except(['_method', '_token'])); 
+            $query = $request->except('_token' , '_method');
+            $query['slug'] = Str::slug($query['title']);
+            Quiz::where('id', $id)->update($query);
             return redirect()->route('quizzes.index')->withSuccess('Quiz Başarılı bir şekilde güncellendi');
         }
     }
