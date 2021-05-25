@@ -27,6 +27,6 @@
             </p>
 
         </div>
-        <a href="#" class="btn btn-primary btn-block btn-sm">Quize Katıl</a>
+        <a href="{{ route('quiz.join', $quiz->slug) }}" class="btn btn-primary btn-block btn-sm">Quize Katıl</a>
     </div>
 </x-app-layout>
